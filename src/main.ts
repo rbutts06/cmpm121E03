@@ -83,15 +83,20 @@ function buildFace() {
   nose.setAttribute("stroke-linecap", "round");
   face.append(nose);
 
-  const mouth = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  mouth.setAttribute("x1", "75");
-  mouth.setAttribute("y1", "137");
-  mouth.setAttribute("x2", "125");
-  mouth.setAttribute("y2", "137");
-  mouth.setAttribute("stroke", "#302c29");
-  mouth.setAttribute("stroke-width", "4");
-  mouth.setAttribute("stroke-linecap", "round");
-  face.append(mouth);
+  const mouth1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  mouth1.setAttribute("d", "M 70 130 Q 90 165 100 130");
+  mouth1.setAttribute("fill", "none");
+  mouth1.setAttribute("stroke", "#302c29");
+  mouth1.setAttribute("stroke-width", "4");
+  mouth1.setAttribute("stroke-linecap", "round");
+  face.append(mouth1);
+  const mouth2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  mouth2.setAttribute("d", "M 100 130 Q 110 165 130 130");
+  mouth2.setAttribute("fill", "none");
+  mouth2.setAttribute("stroke", "#302c29");
+  mouth2.setAttribute("stroke-width", "4");
+  mouth2.setAttribute("stroke-linecap", "round");
+  face.append(mouth2);
 
   return face;
 }
