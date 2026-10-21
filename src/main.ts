@@ -1,11 +1,42 @@
 const portrait = document.querySelector<HTMLDivElement>("#portrait")!;
 const spin = document.querySelector<HTMLButtonElement>("#spin")!;
 
+// The prototype grew inline. Keep it this way until the refactoring checkpoint.
 function buildFace() {
   const face = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   face.setAttribute("viewBox", "0 0 200 200");
   face.setAttribute("role", "img");
   face.setAttribute("aria-label", "A neutral face");
+
+  const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+  const gradient = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "linearGradient",
+  );
+  gradient.setAttribute("id", "face-gradient");
+  gradient.setAttribute("x1", "0%");
+  gradient.setAttribute("y1", "0%");
+  gradient.setAttribute("x2", "100%");
+  gradient.setAttribute("y2", "0%");
+
+  const firstStop = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "stop",
+  );
+  firstStop.setAttribute("offset", "0%");
+  firstStop.setAttribute("stop-color", "#ed0606");
+  gradient.append(firstStop);
+
+  const secondStop = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "stop",
+  );
+  secondStop.setAttribute("offset", "100%");
+  secondStop.setAttribute("stop-color", "#7509c8");
+  gradient.append(secondStop);
+
+  defs.append(gradient);
+  face.append(defs);
 
   const head = document.createElementNS(
     "http://www.w3.org/2000/svg",
@@ -15,7 +46,7 @@ function buildFace() {
   head.setAttribute("cy", "100");
   head.setAttribute("rx", "78");
   head.setAttribute("ry", "86");
-  head.setAttribute("fill", "#f3cf87");
+  head.setAttribute("fill", "url(#face-gradient");
   head.setAttribute("stroke", "#302c29");
   head.setAttribute("stroke-width", "4");
   face.append(head);
