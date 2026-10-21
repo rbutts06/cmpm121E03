@@ -5,7 +5,7 @@ const spin = document.querySelector<HTMLButtonElement>("#spin")!;
 const face = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 face.setAttribute("viewBox", "0 0 200 200");
 face.setAttribute("role", "img");
-face.setAttribute("aria-label", "A neutral face");
+face.setAttribute("aria-label", "Too many teeth");
 
 const head = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
 head.setAttribute("cx", "100");
@@ -49,15 +49,26 @@ nose.setAttribute("stroke-width", "4");
 nose.setAttribute("stroke-linecap", "round");
 face.append(nose);
 
-const mouth = document.createElementNS("http://www.w3.org/2000/svg", "line");
-mouth.setAttribute("x1", "75");
-mouth.setAttribute("y1", "137");
-mouth.setAttribute("x2", "125");
-mouth.setAttribute("y2", "137");
-mouth.setAttribute("stroke", "#302c29");
-mouth.setAttribute("stroke-width", "4");
-mouth.setAttribute("stroke-linecap", "round");
+const mouth = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
+mouth.setAttribute("cx", "100");
+mouth.setAttribute("cy", "145");
+mouth.setAttribute("rx", "40");
+mouth.setAttribute("ry", "20");
+mouth.setAttribute("fill", "#302c29");
 face.append(mouth);
+
+for (let i = 0; i < 100; i++) {
+  const angle = (i / 100) * Math.PI * 2;
+  const tooth = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  tooth.setAttribute("x", String(99 + 36 * (Math.cos(angle))));
+  tooth.setAttribute("y", String(142 + 16 * (Math.sin(angle))));
+  tooth.setAttribute("width", "3");
+  tooth.setAttribute("height", "8");
+  tooth.setAttribute("stroke", "#000000");
+  tooth.setAttribute("stroke-width", "0.25");
+  tooth.setAttribute("fill", "#ffffff");
+  face.append(tooth);
+}
 
 portrait.append(face);
 
