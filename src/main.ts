@@ -1,6 +1,7 @@
 const portrait = document.querySelector<HTMLDivElement>("#portrait")!;
 const spin = document.querySelector<HTMLButtonElement>("#spin")!;
-
+import starURL from "./assets/star.png";
+import rainbowURL from "./assets/rainbow.png";
 // The prototype grew inline. Keep it this way until the refactoring checkpoint.
 const face = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 face.setAttribute("viewBox", "0 0 200 200");
@@ -58,6 +59,28 @@ mouth.setAttribute("stroke", "#302c29");
 mouth.setAttribute("stroke-width", "4");
 mouth.setAttribute("stroke-linecap", "round");
 face.append(mouth);
+
+const starImage = document.createElementNS(
+  "http://www.w3.org/2000/svg",
+  "image",
+);
+starImage.setAttribute("href", starURL);
+starImage.setAttribute("x", "25");
+starImage.setAttribute("y", "95");
+starImage.setAttribute("width", "40");
+starImage.setAttribute("height", "40");
+face.append(starImage);
+
+const rainbowImage = document.createElementNS(
+  "http://www.w3.org/2000/svg",
+  "image",
+);
+rainbowImage.setAttribute("href", rainbowURL);
+rainbowImage.setAttribute("x", "115");
+rainbowImage.setAttribute("y", "135");
+rainbowImage.setAttribute("width", "40");
+rainbowImage.setAttribute("height", "40");
+face.append(rainbowImage);
 
 portrait.append(face);
 
